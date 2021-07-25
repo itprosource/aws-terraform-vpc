@@ -76,9 +76,9 @@ resource "aws_subnet" "database" {
   }
 }
 
-###########
+############################
 ## INTERNET AND NAT GATEWAYS
-###########
+############################
 # Deploys a single Internet GW, and a NAT GW for each private subnet.
 
 resource "aws_internet_gateway" "int_gateway" {
@@ -118,9 +118,9 @@ resource "aws_eip" "nat_eip" {
   }
 }
 
-################################
+####################
 # Public Route Table
-################################
+####################
 
 resource "aws_route_table" "public_rte" {
   vpc_id = aws_vpc.example.id
@@ -142,9 +142,9 @@ resource "aws_route_table_association" "AssociationForRouteTablePublic" {
   route_table_id = element(aws_route_table.public_rte.*.id,count.index)
 }
 
-################################
+######################
 # Private Route Tables
-################################
+######################
 
 resource "aws_route_table" "priv_rte" {
   count = length(var.private_subnets)
