@@ -121,6 +121,8 @@ resource "aws_eip" "nat_eip" {
 ####################
 # Public Route Table
 ####################
+# Deploys a single custom route table associated with each public subnet.
+# Includes routes to Internet Gateway and local VPC.
 
 resource "aws_route_table" "public_rte" {
   vpc_id = aws_vpc.example.id
@@ -145,6 +147,8 @@ resource "aws_route_table_association" "AssociationForRouteTablePublic" {
 ######################
 # Private Route Tables
 ######################
+# Deploys route tables associated with each private subnet.
+# Each table includes a route to the NAT GW in the corresponding public subnet and a route to the local VPC.
 
 resource "aws_route_table" "priv_rte" {
   count = length(var.private_subnets)
