@@ -26,7 +26,6 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = var.map_public_ip_on_launch
   vpc_id = aws_vpc.example.id
   availability_zone = element(var.azs, count.index)
-  # availability_zone_id = var.availability_zone_id
   # customer_owned_ipv4_pool = element(var.customer_owned_ipv4_pool,count.index)
   # map_customer_owned_ip_on_launch = var.map_customer_owned_ip_on_launch
   # ipv6_cidr_block = element(var.ipv6_cidr_block,count.index)

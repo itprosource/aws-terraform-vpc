@@ -34,5 +34,6 @@ module "vpc" {
   enable_classiclink_dns_support = false
   assign_generated_ipv6_cidr_block = false
   map_public_ip_on_launch = false
+
   assign_ipv6_address_on_creation = false
 }
